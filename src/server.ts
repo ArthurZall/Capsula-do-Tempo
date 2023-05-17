@@ -1,11 +1,15 @@
 
 import fastify from "fastify"; //importação do framework
+import { PrismaClient } from "@prisma/client";
+
 const app = fastify();
+const prisma = new PrismaClient();
 
 //ROTAS
 
-app.get("/",()=>{
-    return "Hello World!"
+app.get("/users", async ()=>{
+    const users = await prisma.user.findMany
+    return users
 });
 
 
